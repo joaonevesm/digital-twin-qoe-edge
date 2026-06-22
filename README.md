@@ -1,157 +1,163 @@
-# Digital Twin for QoE Monitoring in Edge Devices
+# Digital Twin para Monitoramento de QoE em Dispositivos Edge
 
-## Overview
+<p align="center">
 
-This repository presents a Digital Twin-based prototype for real-time monitoring and Quality of Experience (QoE) assessment in Edge Computing environments.
+Framework para monitoramento em tempo real de dispositivos Edge utilizando Raspberry Pi, com suporte a Digital Twin para avaliação da Qualidade de Experiência (QoE).
 
-The system collects telemetry from an Edge/IoT device, processes the monitored variables, estimates a QoE score, and displays the current Digital Twin state through a Streamlit dashboard.
+</p>
 
-## Main Features
+---
 
-- Serial telemetry collection from ESP32/Raspberry Pi environments.
-- Simulation mode for testing without hardware.
-- QoE score calculation from network and device metrics.
-- Digital Twin state classification.
-- Interactive dashboard with network, device and QoE views.
-- Modular structure for research and GitHub publication.
+## 📖 Sobre o Projeto
 
-## Architecture
+Este projeto apresenta uma arquitetura baseada em **Digital Twin** para monitoramento em tempo real de dispositivos Edge.
 
-```text
-Physical Device / ESP32
-        |
-        v
-Serial Collector
-        |
-        v
-Telemetry Storage (CSV)
-        |
-        v
-QoE Engine + Digital Twin Core
-        |
-        v
-Streamlit Dashboard
+A solução realiza a coleta contínua de métricas de rede e recursos computacionais da Raspberry Pi, permitindo a construção de uma representação virtual do dispositivo físico e fornecendo suporte à avaliação da Qualidade de Experiência (QoE).
+
+O sistema foi desenvolvido utilizando **Python**, **Streamlit** e **Raspberry Pi**, sendo destinado a experimentos relacionados à Computação em Borda (Edge Computing), Redes 5G/6G e Inteligência Artificial.
+
+---
+
+## 🎯 Objetivos
+
+- Monitorar continuamente métricas do dispositivo Edge;
+- Construir um Digital Twin do ambiente monitorado;
+- Avaliar a Qualidade de Experiência (QoE);
+- Auxiliar estudos sobre Edge AI e Redes Inteligentes.
+
+---
+
+## 🏗 Arquitetura
+
+```
+                 Raspberry Pi
+                      │
+                      ▼
+           Coleta de Métricas
+                      │
+                      ▼
+          Processamento dos Dados
+                      │
+                      ▼
+               Digital Twin
+                      │
+                      ▼
+               Motor de QoE
+                      │
+                      ▼
+            Dashboard Streamlit
 ```
 
-## Repository Structure
+---
 
-```text
-digital-twin-qoe-edge/
-|
-├── README.md
-├── requirements.txt
-├── .gitignore
-|
+## 📊 Métricas Monitoradas
+
+### Rede
+
+- RSSI
+- RTT
+- Jitter
+- Throughput
+- Perda de Pacotes
+
+### Sistema
+
+- Uso de CPU
+- Memória RAM
+- Temperatura
+- Uso de Disco
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+digital-twin-qoe-edge
+│
+├── assets/
+├── data/
+├── docs/
+│
 ├── src/
 │   ├── backend/
-│   │   ├── serial_collector.py
-│   │   └── data_service.py
-│   │
-│   ├── core/
-│   │   ├── digital_twin.py
-│   │   ├── qoe_engine.py
-│   │   └── metrics.py
-│   │
-│   ├── frontend/
-│   │   ├── app.py
-│   │   └── components/
-│   │
 │   ├── config/
-│   │   └── settings.py
-│   │
-│   └── utils/
+│   ├── core/
+│   └── frontend/
 │
-├── data/
-│   ├── raw/
-│   └── processed/
-|
-├── docs/
-├── assets/
-└── tests/
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
 
-## Monitored Metrics
+---
 
-| Category | Metric | Description |
-|---|---|---|
-| Network | RSSI | Signal strength in dBm |
-| Device | Heap | Available memory from the device |
-| Device | Uptime | Device operating time |
-| Energy | Voltage | Voltage reading from the device |
-| Energy | Current | Current raw reading |
-| Energy | Power | Power raw reading |
+## ⚙️ Instalação
 
-## Installation
-
-Clone the repository:
+Clone o repositório
 
 ```bash
-git clone https://github.com/YOUR-USER/digital-twin-qoe-edge.git
+git clone https://github.com/joaonevesm/digital-twin-qoe-edge.git
+```
+
+Entre na pasta
+
+```bash
 cd digital-twin-qoe-edge
 ```
 
-Create a virtual environment:
+Crie o ambiente virtual
+
+Windows
 
 ```bash
 python -m venv .venv
 ```
 
-Activate it on Windows:
+Ative
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Install dependencies:
+Instale as dependências
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Running the Dashboard Without Raspberry Pi
+---
 
-The dashboard works in simulation mode when no CSV telemetry file exists.
+## ▶️ Executando
+
+Inicie o Dashboard
 
 ```bash
 streamlit run src/frontend/app.py
 ```
 
-or:
+---
 
-```bash
-python -m streamlit run src/frontend/app.py
-```
+## 🧠 Tecnologias Utilizadas
 
-## Running the Serial Collector
+- Python
+- Streamlit
+- Pandas
+- Plotly
+- PySerial
+- Raspberry Pi
+- Git
+- GitHub
 
-Use this only when the device is connected by serial port.
+---
 
-```bash
-python -m src.backend.serial_collector
-```
+## 📌 Aplicações
 
-Default serial configuration is defined in:
+O projeto pode ser utilizado em pesquisas envolvendo:
 
-```text
-src/config/settings.py
-```
-
-## Research Context
-
-This prototype is part of an experimental study on Digital Twins, Edge Computing and QoE monitoring for intelligent network-aware applications.
-
-## Citation
-
-```bibtex
-@misc{machado2026digitaltwinqoe,
-  title={Digital Twin for QoE Monitoring in Edge Devices},
-  author={Machado da Silva, Joao Victor Neves},
-  year={2026}
-}
-```
-
-## Author
-
-João Victor Neves Machado da Silva  
-Federal University of Amazonas (UFAM)  
-Mob4AI Research Group
+- Computação em Borda (Edge Computing)
+- Digital Twins
+- Monitoramento de Redes
+- Internet das Coisas (IoT)
+- Inteligência Artificial
+- QoE
+- Redes 5G e 6G
